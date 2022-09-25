@@ -13,6 +13,7 @@ public class ClientSocket extends Thread {
         this.sendCommandSocket = new Socket(host, port);
         this.printWriter = new PrintWriter(this.sendCommandSocket.getOutputStream());
         this.bufferedReader = new BufferedReader(new InputStreamReader(this.sendCommandSocket.getInputStream()));
+        this.setDaemon(true);
     }
 
     public void closeClient() throws IOException {
