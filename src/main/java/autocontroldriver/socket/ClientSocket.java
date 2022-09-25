@@ -38,15 +38,5 @@ public class ClientSocket extends Thread {
         super.run();
     }
 
-
-    public static void main(String[] argv) {
-        try {
-            ClientSocket clientSocket = new ClientSocket("localhost", 9938);
-            clientSocket.sendData("[[\"type_key\", {\"keycode\": 65}]]");
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }
 

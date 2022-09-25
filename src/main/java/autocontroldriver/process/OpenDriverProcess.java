@@ -1,14 +1,15 @@
 package autocontroldriver.process;
 
-import autocontroldriver.socket.ClientSocket;
-
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 
 public class OpenDriverProcess extends Thread {
 
     private String driverPath;
     private Process openDriverProcess;
+    private InputStreamReader driverProcessReader;
+    private InputStreamReader driverErrorReader;
+    private OutputStreamWriter driverProcessWriter;
 
     public OpenDriverProcess(String driverPath) {
         this.driverPath = driverPath;
@@ -21,17 +22,16 @@ public class OpenDriverProcess extends Thread {
             File checkDriver = new File(this.driverPath);
             if (checkDriver.exists()) {
                 openDriverProcess = Runtime.getRuntime().exec(this.driverPath);
+                driverProcessReader = new InputStreamReader(openDriverProcess.getInputStream(), StandardCharsets.UTF_8);
+                driverProcessWriter = new OutputStreamWriter(openDriverProcess.getOutputStream(), StandardCharsets.UTF_8);
+                driverErrorReader = new InputStreamReader(openDriverProcess.getErrorStream(), StandardCharsets.UTF_8);
+            }
+            while (openDriverProcess.isAlive()){
+
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public static void main(String[] argv) {
-        OpenDriverProcess openDriverProcess = new OpenDriverProcess(
-                "C:\\program_workspace\\java\\AutoControlJava\\test_resource\\generate_autocontrol_driver_win64.exe");
-        openDriverProcess.start();
-        while (true){
-        }
-    }
 }
