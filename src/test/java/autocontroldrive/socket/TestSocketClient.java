@@ -12,7 +12,7 @@ public class TestSocketClient {
     public void testSocketSend() {
         try {
             ClientSocket clientSocket = new ClientSocket("localhost", 9938);
-            clientSocket.sendData("[[\"type_key\", {\"keycode\": 65}]]");
+            clientSocket.sendData("[[\"size\"]]");
             clientSocket.sendData("quit_server");
         } catch (IOException e) {
             e.printStackTrace();

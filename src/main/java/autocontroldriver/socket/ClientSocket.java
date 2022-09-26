@@ -7,12 +7,12 @@ import java.net.Socket;
 public class ClientSocket extends Thread {
     private Socket sendCommandSocket;
     private PrintWriter printWriter;
-    private BufferedReader bufferedReader;
+    private String host;
+    private int port;
 
     public ClientSocket(String host, int port) throws IOException {
-        this.sendCommandSocket = new Socket(host, port);
-        this.printWriter = new PrintWriter(this.sendCommandSocket.getOutputStream());
-        this.bufferedReader = new BufferedReader(new InputStreamReader(this.sendCommandSocket.getInputStream()));
+        this.host = host;
+        this.port = port;
         this.setDaemon(true);
     }
 
@@ -21,18 +21,19 @@ public class ClientSocket extends Thread {
             sendCommandSocket.close();
         if (printWriter != null)
             printWriter.close();
-        if (bufferedReader != null)
-            bufferedReader.close();
     }
 
     public void sendData(String stringToPrint){
-        this.printWriter.write(stringToPrint);
-        this.printWriter.flush();
+        try {
+            this.sendCommandSocket = new Socket(this.host, this.port);
+            this.printWriter = new PrintWriter(this.sendCommandSocket.getOutputStream());
+            this.printWriter.write(stringToPrint);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
-    public String receiveData() throws IOException {
-        return this.bufferedReader.readLine();
-    }
 
     @Override
     public void run() {
