@@ -1,8 +1,7 @@
 package autocontroldriver.bind;
 
-import autocontroldriver.bind.screen.Screen;
-import autocontroldriver.process.OpenDriverProcess;
-import autocontroldriver.socket.ClientSocket;
+import autocontroldriver.utils.process.OpenDriverProcess;
+import autocontroldriver.utils.socket.ClientSocket;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -34,22 +33,27 @@ public class AutoControlDriverManager {
             openDriverProcess = new OpenDriverProcess(this.driverPath);
             openDriverProcess.start();
             this.clientSocket = new ClientSocket(host, port);
-        }else {
+            clientSocket.start();
+        } else {
             throw new IOException("Can't init AutoControlDriverManager");
         }
 
     }
 
-    public void sendCommand(String commandToSend){
-        this.clientSocket.sendData(commandToSend);
+    public void sendCommand(String commandToSend) {
+        if (openDriverProcess.isAlive() && this.clientSocket != null) {
+            this.clientSocket.sendData(commandToSend);
+        } else
+            throw new RuntimeException("Driver not ready");
     }
 
-    public boolean isAlive(){
+    public boolean isAlive() {
         return openDriverProcess.isAlive();
     }
 
-    public void quit(){
+    public void quit() {
         try {
+            this.clientSocket.sendData("quit_server");
             this.clientSocket.closeClient();
             openDriverProcess.close();
         } catch (IOException e) {
