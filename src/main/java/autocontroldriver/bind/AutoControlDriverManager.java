@@ -1,5 +1,6 @@
 package autocontroldriver.bind;
 
+import autocontroldriver.bind.screen.Screen;
 import autocontroldriver.utils.process.OpenDriverProcess;
 import autocontroldriver.utils.socket.ClientSocket;
 
@@ -11,6 +12,7 @@ public class AutoControlDriverManager {
     private ClientSocket clientSocket;
     private static OpenDriverProcess openDriverProcess;
     private String driverPath;
+    public Screen screen = new Screen(this);
 
     public AutoControlDriverManager(String host, int port, String driverPath, String platform) throws IOException {
         this.driverPath = driverPath;

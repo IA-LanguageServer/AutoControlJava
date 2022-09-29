@@ -27,7 +27,8 @@ public class TestAutoControlDriverManager {
                 autoControlDriverManager.sendCommand("[[\"set_position\", {\"x\": 100, \"y\": 100}]]");
                 autoControlDriverManager.sendCommand("[[\"set_position\", {\"x\": 500, \"y\": 500}]]");
             }
-            autoControlDriverManager.sendCommand("[[\"screenshot\"]]");
+            autoControlDriverManager.screen.screenshot();
+            autoControlDriverManager.screen.screenshot("C:/program_workspace/java/AutoControlJava/test_resource/test.png");
         } catch (IOException e) {
             e.printStackTrace();
         }finally {
