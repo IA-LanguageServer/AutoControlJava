@@ -26,7 +26,7 @@ public class ClientSocket extends Thread {
 
     public void sendData(String stringToPrint) {
         boolean retry = true;
-        int retryCount = 2;
+        int retryCount = 5;
         while (retry && retryCount >= 0) {
             try {
                 System.out.println("command is: " + stringToPrint);
@@ -37,7 +37,7 @@ public class ClientSocket extends Thread {
                 retry = false;
             } catch (IOException e) {
                 e.printStackTrace();
-                System.err.println("Can't send command will retry");
+                System.err.printf("Can't send %s will retry%n", stringToPrint);
                 retryCount -=1;
             }
         }

@@ -12,12 +12,10 @@ public class OpenDriverProcess extends Thread {
     private BufferedInputStream driverProcessReader;
     // use to read process error output
     private BufferedInputStream driverErrorReader;
-    private boolean isClose;
 
     public OpenDriverProcess(String driverPath) {
         this.driverPath = driverPath;
         this.setDaemon(true);
-        this.isClose = false;
     }
 
 
@@ -33,7 +31,6 @@ public class OpenDriverProcess extends Thread {
         if(this.process != null) {
             process.destroy();
         }
-        this.isClose = true;
     }
 
     @Override

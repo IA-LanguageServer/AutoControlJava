@@ -4,7 +4,7 @@ import autocontroldriver.bind.AutoControlDriverManager;
 
 public class Screen {
 
-    private AutoControlDriverManager autoControlDriverManager;
+    private final AutoControlDriverManager autoControlDriverManager;
 
     public Screen(AutoControlDriverManager autoControlDriverManager) {
         this.autoControlDriverManager = autoControlDriverManager;
