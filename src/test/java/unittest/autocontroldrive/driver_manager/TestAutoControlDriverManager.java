@@ -4,6 +4,7 @@ import autocontroldriver.bind.AutoControlDriverManager;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.nio.file.Path;
 
 public class TestAutoControlDriverManager {
 
@@ -14,23 +15,12 @@ public class TestAutoControlDriverManager {
             autoControlDriverManager = new AutoControlDriverManager(
                     "localhost",
                     9938,
-                    "C:\\program_workspace\\java\\AutoControlJava\\test_resource\\generate_autocontrol_driver.exe",
+                    Path.of("").toAbsolutePath() + "generate_autocontrol_driver.exe",
                     "windows"
             );
-            while (!autoControlDriverManager.isAlive()){
-            }
-            autoControlDriverManager.sendCommand("[[\"size\"]]");
-            autoControlDriverManager.sendCommand("[[\"type_key\", {\"keycode\": 65}]]");
-            autoControlDriverManager.sendCommand("[[\"type_key\", {\"keycode\": 66}]]");
-            autoControlDriverManager.sendCommand("[[\"type_key\", {\"keycode\": 67}]]");
-            for(int i=0; i<10; i++) {
-                autoControlDriverManager.sendCommand("[[\"set_position\", {\"x\": 100, \"y\": 100}]]");
-                autoControlDriverManager.sendCommand("[[\"set_position\", {\"x\": 500, \"y\": 500}]]");
-            }
-            autoControlDriverManager.sendCommand("[[\"screenshot\"]]");
         } catch (IOException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             assert autoControlDriverManager != null;
             autoControlDriverManager.quit();
         }

@@ -1,5 +1,7 @@
 package autocontroldriver.bind;
 
+import autocontroldriver.bind.mouse.Mouse;
+import autocontroldriver.bind.screen.Screen;
 import autocontroldriver.utils.process.OpenDriverProcess;
 import autocontroldriver.utils.socket.ClientSocket;
 
@@ -8,19 +10,21 @@ import java.nio.file.Path;
 
 public class AutoControlDriverManager {
 
-    private ClientSocket clientSocket;
+    private final ClientSocket clientSocket;
     private static OpenDriverProcess openDriverProcess;
-    private String driverPath;
+    public String driverPath;
+    public Screen screen = new Screen(this);
+    public Mouse mouse = new Mouse(this);
 
     public AutoControlDriverManager(String host, int port, String driverPath, String platform) throws IOException {
         this.driverPath = driverPath;
         switch (platform) {
             case "windows":
-                if (driverPath == null)
+                if (this.driverPath == null)
                     this.driverPath = Path.of("").toAbsolutePath() + "/generate_autocontrol_driver_win64.exe";
                 break;
             case "linux":
-                if (driverPath == null)
+                if (this.driverPath == null)
                     this.driverPath = Path.of("").toAbsolutePath() + "/generate_autocontrol_driver_liinux";
                 break;
             case "macos":
@@ -29,11 +33,14 @@ public class AutoControlDriverManager {
                 break;
 
         }
+        this.driverPath = this.driverPath.replace("\\", "/");
         if (openDriverProcess == null) {
             openDriverProcess = new OpenDriverProcess(this.driverPath);
             openDriverProcess.start();
             this.clientSocket = new ClientSocket(host, port);
             clientSocket.start();
+            while (!openDriverProcess.isAlive()) {
+            }
         } else {
             throw new IOException("Can't init AutoControlDriverManager");
         }
@@ -41,15 +48,19 @@ public class AutoControlDriverManager {
     }
 
     public void sendCommand(String commandToSend) {
-        if (openDriverProcess.isAlive() && this.clientSocket != null) {
-            this.clientSocket.sendData(commandToSend);
-        } else
-            throw new RuntimeException("Driver not ready");
+        boolean retry = true;
+        int retryCount = 5;
+        while (retry && retryCount >= 0) {
+            if (openDriverProcess.isAlive() && this.clientSocket != null) {
+                this.clientSocket.sendData(commandToSend);
+                retry = false;
+            } else {
+                System.err.printf("Driver not ready %s%n", commandToSend);
+                retryCount -=1;
+            }
+        }
     }
 
-    public boolean isAlive() {
-        return openDriverProcess.isAlive();
-    }
 
     public void quit() {
         try {
