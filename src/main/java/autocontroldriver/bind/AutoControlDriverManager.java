@@ -1,6 +1,8 @@
 package autocontroldriver.bind;
 
+import autocontroldriver.bind.image.Image;
 import autocontroldriver.bind.mouse.Mouse;
+import autocontroldriver.bind.record.Record;
 import autocontroldriver.bind.screen.Screen;
 import autocontroldriver.utils.process.OpenDriverProcess;
 import autocontroldriver.utils.socket.ClientSocket;
@@ -15,6 +17,8 @@ public class AutoControlDriverManager {
     public String driverPath;
     public Screen screen = new Screen(this);
     public Mouse mouse = new Mouse(this);
+    public Image image = new Image(this);
+    public Record record = new Record(this);
 
     public AutoControlDriverManager(String host, int port, String driverPath, String platform) throws IOException {
         this.driverPath = driverPath;
