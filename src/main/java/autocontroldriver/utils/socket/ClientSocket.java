@@ -24,7 +24,7 @@ public class ClientSocket extends Thread {
             printWriter.close();
     }
 
-    public void sendData(String stringToPrint) {
+    public String sendData(String stringToPrint) {
         boolean retry = true;
         int retryCount = 5;
         while (retry && retryCount >= 0) {
@@ -35,19 +35,17 @@ public class ClientSocket extends Thread {
                 this.printWriter.write(stringToPrint);
                 this.printWriter.flush();
                 retry = false;
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(this.sendCommandSocket.getInputStream()));
+                System.out.println(bufferedReader.readLine());
+                bufferedReader.close();
             } catch (IOException e) {
                 e.printStackTrace();
                 System.err.printf("Can't send %s will retry%n", stringToPrint);
-                retryCount -=1;
+                retryCount -= 1;
             }
         }
+        return "";
     }
-
-
-    @Override
-    public void run() {
-        super.run();
-    }
-
 }
+
 
