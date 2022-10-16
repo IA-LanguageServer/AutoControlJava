@@ -18,7 +18,7 @@ public class ClientSocket extends Thread {
 
 
     public void closeClient() throws IOException {
-        if (sendCommandSocket != null)
+        if (sendCommandSocket != null && !sendCommandSocket.isClosed())
             sendCommandSocket.close();
         if (printWriter != null)
             printWriter.close();
@@ -35,14 +35,17 @@ public class ClientSocket extends Thread {
                 this.printWriter.write(stringToPrint);
                 this.printWriter.flush();
                 retry = false;
-                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(this.sendCommandSocket.getInputStream()));
-                String readData = bufferedReader.readLine();
-                while (!readData.equals("Return_Data_Over_JE")){
-                    System.out.println(readData);
-                    System.out.flush();
-                    readData = bufferedReader.readLine();
+                if(!stringToPrint.equals("quit_server")) {
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(this.sendCommandSocket.getInputStream()));
+                    String readData = bufferedReader.readLine();
+                    while (!readData.equals("Return_Data_Over_JE")) {
+                        System.out.println(readData);
+                        System.out.flush();
+                        readData = bufferedReader.readLine();
+                    }
+                    bufferedReader.close();
+                    this.sendCommandSocket.close();
                 }
-                bufferedReader.close();
             } catch (IOException e) {
                 e.printStackTrace();
                 System.err.printf("Can't send %s will retry%n", stringToPrint);

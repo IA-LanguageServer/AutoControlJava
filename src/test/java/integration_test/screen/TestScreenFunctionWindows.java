@@ -29,7 +29,7 @@ public class TestScreenFunctionWindows {
 
     @AfterClass
     public static void afterTest() {
-       // autoControlDriverManager.quit();
+       autoControlDriverManager.quit();
     }
 
     @Test
