@@ -9,9 +9,9 @@ public class OpenDriverProcess extends Thread {
     // Process use to open driver
     private Process process;
     // use to read process output
-    private BufferedInputStream driverProcessReader;
+    private InputStreamReader driverProcessReader;
     // use to read process error output
-    private BufferedInputStream driverErrorReader;
+    private InputStreamReader driverErrorReader;
 
     public OpenDriverProcess(String driverPath) {
         this.driverPath = driverPath;
@@ -40,8 +40,8 @@ public class OpenDriverProcess extends Thread {
             File checkDriver = new File(this.driverPath);
             if (checkDriver.exists()) {
                 process = Runtime.getRuntime().exec(this.driverPath);
-                driverProcessReader = new BufferedInputStream(process.getInputStream());
-                driverErrorReader = new BufferedInputStream(process.getErrorStream());
+                driverProcessReader = new InputStreamReader(process.getInputStream());
+                driverErrorReader = new InputStreamReader(process.getErrorStream());
                 while (process.isAlive()){
                 }
             }

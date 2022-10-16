@@ -1,4 +1,4 @@
-package integration_test.screen;
+package integration_test.record;
 
 import autocontroldriver.bind.AutoControlDriverManager;
 import org.junit.AfterClass;
@@ -8,7 +8,7 @@ import org.junit.Test;
 import java.io.IOException;
 import java.nio.file.Path;
 
-public class TestScreenFunctionWindows {
+public class TestRecordFunctionWindows {
 
     public static AutoControlDriverManager autoControlDriverManager;
 
@@ -27,26 +27,15 @@ public class TestScreenFunctionWindows {
         }
     }
 
+    @Test
+    public void testRecord(){
+        autoControlDriverManager.record.record();
+        autoControlDriverManager.record.stopRecord();
+    }
+
     @AfterClass
     public static void afterTest() {
-       autoControlDriverManager.quit();
+        autoControlDriverManager.quit();
     }
-
-    @Test
-    public void testSize() {
-        autoControlDriverManager.screen.screenSize();
-    }
-
-    @Test
-    public void testScreenshot() {
-        autoControlDriverManager.screen.screenshot();
-        autoControlDriverManager.screen.screenshot(Path.of("").toAbsolutePath() + "/test.png");
-        autoControlDriverManager.screen.screenshot(100, 100, 500, 500);
-        autoControlDriverManager.screen.screenshot(
-                Path.of("").toAbsolutePath() + "/test1.png",
-                100, 100, 500, 500);
-    }
-
 
 }
-

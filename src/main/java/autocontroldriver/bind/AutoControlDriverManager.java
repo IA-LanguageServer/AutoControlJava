@@ -1,6 +1,8 @@
 package autocontroldriver.bind;
 
+import autocontroldriver.bind.image.Image;
 import autocontroldriver.bind.mouse.Mouse;
+import autocontroldriver.bind.record.Record;
 import autocontroldriver.bind.screen.Screen;
 import autocontroldriver.utils.process.OpenDriverProcess;
 import autocontroldriver.utils.socket.ClientSocket;
@@ -10,11 +12,15 @@ import java.nio.file.Path;
 
 public class AutoControlDriverManager {
 
-    private final ClientSocket clientSocket;
+    private ClientSocket clientSocket;
     private static OpenDriverProcess openDriverProcess;
+    private String host;
+    private int port;
     public String driverPath;
     public Screen screen = new Screen(this);
     public Mouse mouse = new Mouse(this);
+    public Image image = new Image(this);
+    public Record record = new Record(this);
 
     public AutoControlDriverManager(String host, int port, String driverPath, String platform) throws IOException {
         this.driverPath = driverPath;
@@ -33,12 +39,13 @@ public class AutoControlDriverManager {
                 break;
 
         }
+        this.host = host;
+        this.port = port;
         this.driverPath = this.driverPath.replace("\\", "/");
         if (openDriverProcess == null) {
             openDriverProcess = new OpenDriverProcess(this.driverPath);
             openDriverProcess.start();
             this.clientSocket = new ClientSocket(host, port);
-            clientSocket.start();
             while (!openDriverProcess.isAlive()) {
             }
         } else {
@@ -47,18 +54,17 @@ public class AutoControlDriverManager {
 
     }
 
-    public void sendCommand(String commandToSend) {
-        boolean retry = true;
+    public String sendCommand(String commandToSend) {
         int retryCount = 5;
-        while (retry && retryCount >= 0) {
+        while (retryCount >= 0) {
             if (openDriverProcess.isAlive() && this.clientSocket != null) {
-                this.clientSocket.sendData(commandToSend);
-                retry = false;
+                return this.clientSocket.sendData(commandToSend);
             } else {
                 System.err.printf("Driver not ready %s%n", commandToSend);
                 retryCount -=1;
             }
         }
+        return "";
     }
 
 
