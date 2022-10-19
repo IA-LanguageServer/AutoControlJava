@@ -35,13 +35,15 @@ public class ClientSocket extends Thread {
                 this.printWriter.write(stringToPrint);
                 this.printWriter.flush();
                 retry = false;
-                if(!stringToPrint.equals("quit_server")) {
+                if (!stringToPrint.equals("quit_server")) {
                     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(this.sendCommandSocket.getInputStream()));
                     String readData = bufferedReader.readLine();
-                    while (!readData.equals("Return_Data_Over_JE")) {
-                        System.out.println(readData);
-                        System.out.flush();
-                        readData = bufferedReader.readLine();
+                    if (readData != null) {
+                        while (!readData.equals("Return_Data_Over_JE")) {
+                            System.out.println(readData);
+                            System.out.flush();
+                            readData = bufferedReader.readLine();
+                        }
                     }
                     bufferedReader.close();
                     this.sendCommandSocket.close();

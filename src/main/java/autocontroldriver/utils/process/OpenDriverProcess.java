@@ -1,6 +1,7 @@
 package autocontroldriver.utils.process;
 
 import java.io.*;
+import java.util.List;
 
 public class OpenDriverProcess extends Thread {
 
@@ -8,6 +9,8 @@ public class OpenDriverProcess extends Thread {
     private String driverPath;
     // Process use to open driver
     private Process process;
+    // use to create process
+    private List<String> processCommandList;
     // use to read process output
     private InputStreamReader driverProcessReader;
     // use to read process error output
@@ -18,6 +21,11 @@ public class OpenDriverProcess extends Thread {
         this.setDaemon(true);
     }
 
+    public OpenDriverProcess(List<String> processCommandList) {
+        this.driverPath = processCommandList.get(0);
+        this.processCommandList = processCommandList;
+        this.setDaemon(true);
+    }
 
     public void setDriverPath(String driverPath) {
         this.driverPath = driverPath;
@@ -27,8 +35,8 @@ public class OpenDriverProcess extends Thread {
         return this.driverPath;
     }
 
-    public void close(){
-        if(this.process != null) {
+    public void close() {
+        if (this.process != null) {
             process.destroy();
         }
     }
@@ -39,10 +47,18 @@ public class OpenDriverProcess extends Thread {
         try {
             File checkDriver = new File(this.driverPath);
             if (checkDriver.exists()) {
-                process = Runtime.getRuntime().exec(this.driverPath);
+                ProcessBuilder processBuilder;
+                if (processCommandList == null ) {
+                    processBuilder = new ProcessBuilder(this.driverPath);
+                } else {
+                    processBuilder = new ProcessBuilder(this.processCommandList);
+                }
+                this.process = processBuilder.start();
                 driverProcessReader = new InputStreamReader(process.getInputStream());
                 driverErrorReader = new InputStreamReader(process.getErrorStream());
-                while (process.isAlive()){
+                if (process != null) {
+                    while (process.isAlive()) {
+                    }
                 }
             }
         } catch (IOException e) {
