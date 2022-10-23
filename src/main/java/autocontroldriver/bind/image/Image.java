@@ -13,7 +13,7 @@ public class Image {
     public void locateAllImage(String imagePath, double detectThreshold, boolean drawImage) {
         imagePath = imagePath.replace("\\", "/");
         this.autoControlDriverManager.sendCommand(
-                String.format(
+                String.format(  
                         "[[\"locate_all_image\", {\"image\": \"%s\"," +
                                 "\"detect_threshold\": %.1f," +
                                 "\"draw_image\": %b}]]",

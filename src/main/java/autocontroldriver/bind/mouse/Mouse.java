@@ -10,6 +10,10 @@ public class Mouse {
         this.autoControlDriverManager = autoControlDriverManager;
     }
 
+    public void specialTable() {
+        this.autoControlDriverManager.sendCommand(("[[\"special_table\"]]"));
+    }
+
     public void position(){
         this.autoControlDriverManager.sendCommand("[[\"position\"]]");
     }

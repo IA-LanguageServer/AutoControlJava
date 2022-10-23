@@ -66,6 +66,11 @@ public class TestKeyboardFunctionWindows {
         autoControlDriverManager.keyboard.hotkey(list, false);
     }
 
+    @Test
+    public void testKeysTable(){
+        autoControlDriverManager.keyboard.keysTable();
+    }
+
     @AfterClass
     public static void afterTest() {
         autoControlDriverManager.quit();

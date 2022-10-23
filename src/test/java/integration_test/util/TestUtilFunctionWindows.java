@@ -1,6 +1,7 @@
-package integration_test.mouse;
+package integration_test.util;
 
 import autocontroldriver.bind.AutoControlDriverManager;
+import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -8,7 +9,7 @@ import org.junit.Test;
 import java.io.IOException;
 import java.nio.file.Path;
 
-public class TestMouseFunctionWindows {
+public class TestUtilFunctionWindows {
 
     public static AutoControlDriverManager autoControlDriverManager;
 
@@ -28,16 +29,8 @@ public class TestMouseFunctionWindows {
     }
 
     @Test
-    public void positionTest() {
-        autoControlDriverManager.mouse.position();
-    }
-
-    @Test
-    public void setPositionTest() {
-        for (int i = 0; i < 11; i++) {
-            autoControlDriverManager.mouse.setPosition(100, 100);
-            autoControlDriverManager.mouse.setPosition(500, 500);
-        }
+    public void testSetRecordEnable() {
+        autoControlDriverManager.util.setRecordEnable(true);
     }
 
     @Test
@@ -54,8 +47,8 @@ public class TestMouseFunctionWindows {
     }
 
     @Test
-    public void testSpecialTable(){
-        autoControlDriverManager.mouse.specialTable();
+    public void testGenerateHtml() {
+        autoControlDriverManager.util.generateHtml();
     }
 
     @AfterClass
@@ -64,3 +57,4 @@ public class TestMouseFunctionWindows {
     }
 
 }
+

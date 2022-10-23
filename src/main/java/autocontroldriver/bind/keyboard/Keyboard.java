@@ -13,6 +13,10 @@ public class Keyboard {
         this.autoControlDriverManager = autoControlDriverManager;
     }
 
+    public void keysTable() {
+        this.autoControlDriverManager.sendCommand(("[[\"keys_table\"]]"));
+    }
+
     public void pressKey(String keycode, boolean isShift, boolean skipRecord) {
         this.autoControlDriverManager.sendCommand(
                 String.format("[[\"press_key\", " +

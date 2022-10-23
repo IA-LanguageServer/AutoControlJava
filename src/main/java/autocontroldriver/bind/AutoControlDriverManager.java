@@ -5,6 +5,7 @@ import autocontroldriver.bind.keyboard.Keyboard;
 import autocontroldriver.bind.mouse.Mouse;
 import autocontroldriver.bind.record.Record;
 import autocontroldriver.bind.screen.Screen;
+import autocontroldriver.bind.utils.Util;
 import autocontroldriver.utils.process.OpenDriverProcess;
 import autocontroldriver.utils.socket.ClientSocket;
 
@@ -24,6 +25,7 @@ public class AutoControlDriverManager {
     public Keyboard keyboard = new Keyboard(this);
     public Image image = new Image(this);
     public Record record = new Record(this);
+    public Util util = new Util(this);
 
     private String setDriver(String host, int port, String platform){
         switch (platform) {
