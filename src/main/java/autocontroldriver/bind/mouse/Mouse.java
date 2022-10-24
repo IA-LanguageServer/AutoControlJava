@@ -77,7 +77,7 @@ public class Mouse {
 
     public void scroll(int scroll_value, int x, int y, String scroll_direction){
         this.autoControlDriverManager.sendCommand(
-                String.format("[[\"scroll\", {\"scroll_value\": %d, \"x\": %d, \"y\": %d, \"scroll_direction\": %s}]]",
+                String.format("[[\"scroll\", {\"scroll_value\": %d, \"x\": %d, \"y\": %d, \"scroll_direction\": \"%s\"}]]",
                         scroll_value, x, y, scroll_direction)
         );
     }
