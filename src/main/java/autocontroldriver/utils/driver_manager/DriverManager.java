@@ -1,11 +1,11 @@
-package autocontroldriver.bind;
+package autocontroldriver.utils.driver_manager;
 
 import autocontroldriver.bind.image.Image;
 import autocontroldriver.bind.keyboard.Keyboard;
 import autocontroldriver.bind.mouse.Mouse;
 import autocontroldriver.bind.record.Record;
 import autocontroldriver.bind.screen.Screen;
-import autocontroldriver.bind.utils.Util;
+import autocontroldriver.bind.utils.Utils;
 import autocontroldriver.utils.process.OpenDriverProcess;
 import autocontroldriver.utils.socket.ClientSocket;
 
@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
 
-public class AutoControlDriverManager {
+public class DriverManager {
 
     private ClientSocket clientSocket;
     private static OpenDriverProcess openDriverProcess;
@@ -25,7 +25,7 @@ public class AutoControlDriverManager {
     public Keyboard keyboard = new Keyboard(this);
     public Image image = new Image(this);
     public Record record = new Record(this);
-    public Util util = new Util(this);
+    public Utils utils = new Utils(this);
 
     private String setDriver(String host, int port, String platform){
         switch (platform) {
@@ -49,7 +49,7 @@ public class AutoControlDriverManager {
     }
 
 
-    public AutoControlDriverManager(String host, int port, String driverPath, String platform) throws IOException {
+    public DriverManager(String host, int port, String driverPath, String platform) throws IOException {
         this.driverPath = driverPath;
         setDriver(host, port, platform);
         if (openDriverProcess == null) {
@@ -59,11 +59,11 @@ public class AutoControlDriverManager {
             while (!openDriverProcess.isAlive()) {
             }
         } else {
-            throw new IOException("Can't init AutoControlDriverManager");
+            throw new IOException("Can't init DriverManager");
         }
     }
 
-    public AutoControlDriverManager(String host, int port, List<String> processCommandList, String platform) throws IOException {
+    public DriverManager(String host, int port, List<String> processCommandList, String platform) throws IOException {
         this.driverPath = processCommandList.get(0);
         setDriver(host, port, platform);
         if (openDriverProcess == null) {
@@ -73,7 +73,7 @@ public class AutoControlDriverManager {
             while (!openDriverProcess.isAlive()) {
             }
         } else {
-            throw new IOException("Can't init AutoControlDriverManager");
+            throw new IOException("Can't init DriverManager");
         }
     }
 

@@ -1,6 +1,6 @@
 package integration_test.keyboard;
 
-import autocontroldriver.bind.AutoControlDriverManager;
+import autocontroldriver.utils.driver_manager.DriverManager;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -12,13 +12,13 @@ import java.util.List;
 
 public class TestKeyboardFunctionWindows {
 
-    public static AutoControlDriverManager autoControlDriverManager;
+    public static DriverManager driverManager;
 
     @BeforeClass
     public static void setDriver() {
-        autoControlDriverManager = null;
+        driverManager = null;
         try {
-            autoControlDriverManager = new AutoControlDriverManager(
+            driverManager = new DriverManager(
                     "localhost",
                     9938,
                     Path.of("").toAbsolutePath() + "/generate_autocontrol_driver.exe",
@@ -31,27 +31,27 @@ public class TestKeyboardFunctionWindows {
 
     @Test
     public void testPressKey(){
-        autoControlDriverManager.keyboard.pressKey("a", false, false);
+        driverManager.keyboard.pressKey("a", false, false);
     }
 
     @Test
     public void testReleaseKey(){
-        autoControlDriverManager.keyboard.releaseKey("a", false, false);
+        driverManager.keyboard.releaseKey("a", false, false);
     }
 
     @Test
     public void testTypeKey(){
-        autoControlDriverManager.keyboard.typeKey("a", false, false);
+        driverManager.keyboard.typeKey("a", false, false);
     }
 
     @Test
     public void testCheckKeyIsPress(){
-        autoControlDriverManager.keyboard.checkKeyIsPress("a");
+        driverManager.keyboard.checkKeyIsPress("a");
     }
 
     @Test
     public void testWrite(){
-        autoControlDriverManager.keyboard.write("abcdef", false);
+        driverManager.keyboard.write("abcdef", false);
     }
 
     @Test
@@ -63,17 +63,17 @@ public class TestKeyboardFunctionWindows {
         list.add("c");
         list.add("lcontrol");
         list.add("v");
-        autoControlDriverManager.keyboard.hotkey(list, false);
+        driverManager.keyboard.hotkey(list, false);
     }
 
     @Test
     public void testKeysTable(){
-        autoControlDriverManager.keyboard.keysTable();
+        driverManager.keyboard.keysTable();
     }
 
     @AfterClass
     public static void afterTest() {
-        autoControlDriverManager.quit();
+        driverManager.quit();
     }
 
 }

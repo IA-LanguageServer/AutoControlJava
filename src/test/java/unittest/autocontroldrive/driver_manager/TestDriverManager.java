@@ -1,6 +1,6 @@
 package unittest.autocontroldrive.driver_manager;
 
-import autocontroldriver.bind.AutoControlDriverManager;
+import autocontroldriver.utils.driver_manager.DriverManager;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -8,19 +8,19 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TestAutoControlDriverManager {
+public class TestDriverManager {
 
     @Test
     public void testDriverManagerDriverPath() {
-        AutoControlDriverManager autoControlDriverManager = null;
+        DriverManager driverManager = null;
         try {
-            autoControlDriverManager = new AutoControlDriverManager(
+            driverManager = new DriverManager(
                     "localhost",
                     9938,
                     Path.of("").toAbsolutePath() + "/generate_autocontrol_driver.exe",
                     "windows"
             );
-            autoControlDriverManager.quit();
+            driverManager.quit();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -28,11 +28,11 @@ public class TestAutoControlDriverManager {
 
     @Test
     public void testDriverManagerProcessCommand() {
-        AutoControlDriverManager autoControlDriverManager = null;
+        DriverManager driverManager = null;
         List<String> commandList = new ArrayList<>();
         commandList.add(Path.of("").toAbsolutePath() + "/generate_autocontrol_driver.exe");
         try {
-            autoControlDriverManager = new AutoControlDriverManager(
+            driverManager = new DriverManager(
                     "localhost",
                     9938,
                     commandList,
@@ -41,8 +41,8 @@ public class TestAutoControlDriverManager {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            assert autoControlDriverManager != null;
-            autoControlDriverManager.quit();
+            assert driverManager != null;
+            driverManager.quit();
         }
     }
 }

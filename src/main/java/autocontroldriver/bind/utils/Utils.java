@@ -1,29 +1,29 @@
 package autocontroldriver.bind.utils;
 
-import autocontroldriver.bind.AutoControlDriverManager;
+import autocontroldriver.utils.driver_manager.DriverManager;
 
-public class Util {
+public class Utils {
 
-    private final AutoControlDriverManager autoControlDriverManager;
+    private final DriverManager driverManager;
 
-    public Util(AutoControlDriverManager autoControlDriverManager) {
-        this.autoControlDriverManager = autoControlDriverManager;
+    public Utils(DriverManager driverManager) {
+        this.driverManager = driverManager;
     }
 
     public void setRecordEnable(boolean setEnable) {
-        autoControlDriverManager.sendCommand(
+        driverManager.sendCommand(
                 String.format("[[\"set_record_enable\", {\"set_enable\": %b}]]", setEnable)
         );
     }
 
     public void generateHtml() {
-        autoControlDriverManager.sendCommand(
+        driverManager.sendCommand(
                 "[[\"generate_html\"]]"
         );
     }
 
     public void generateHtml(String htmlName) {
-        autoControlDriverManager.sendCommand(
+        driverManager.sendCommand(
                 String.format("[[\"generate_html\", {\"html_name\": \"%s\"}]]", htmlName)
         );
     }
