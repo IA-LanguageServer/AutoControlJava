@@ -4,7 +4,7 @@ import autocontroldriver.utils.driver_manager.DriverManager;
 
 public class Image {
 
-    private final DriverManager driverManager;
+    private DriverManager driverManager;
 
     public Image(DriverManager driverManager) {
         this.driverManager = driverManager;

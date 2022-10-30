@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Keyboard {
 
-    private final DriverManager driverManager;
+    private DriverManager driverManager;
 
     public Keyboard(DriverManager driverManager) {
         this.driverManager = driverManager;

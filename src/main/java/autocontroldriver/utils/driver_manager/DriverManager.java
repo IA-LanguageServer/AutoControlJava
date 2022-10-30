@@ -30,15 +30,15 @@ public class DriverManager {
     private String setDriver(String host, int port, String platform){
         switch (platform) {
             case "windows":
-                if (this.driverPath == null)
-                    this.driverPath = Path.of("").toAbsolutePath() + "/generate_autocontrol_driver_win64.exe";
+                if (this.driverPath.equals(""))
+                    this.driverPath = Path.of("").toAbsolutePath() + "/generate_autocontrol_driver_win.exe";
                 break;
             case "linux":
-                if (this.driverPath == null)
+                if (this.driverPath.equals(""))
                     this.driverPath = Path.of("").toAbsolutePath() + "/generate_autocontrol_driver_liinux";
                 break;
             case "macos":
-                if (driverPath == null)
+                if (this.driverPath.equals(""))
                     this.driverPath = Path.of("").toAbsolutePath() + "/generate_autocontrol_driver_macos";
                 break;
         }

@@ -12,7 +12,7 @@ public class TestOpenDriver {
     @Test
     public void testOpen() {
         OpenDriverProcess openDriverProcess = new OpenDriverProcess(
-                Path.of("").toAbsolutePath() + "/generate_autocontrol_driver.exe");
+                Path.of("").toAbsolutePath() + "/generate_autocontrol_driver_win.exe");
         openDriverProcess.start();
     }
 

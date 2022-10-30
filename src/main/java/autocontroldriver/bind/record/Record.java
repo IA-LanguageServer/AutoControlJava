@@ -4,7 +4,7 @@ import autocontroldriver.utils.driver_manager.DriverManager;
 
 public class Record {
 
-    private final DriverManager driverManager;
+    private DriverManager driverManager;
 
     public Record(DriverManager driverManager) {
         this.driverManager = driverManager;

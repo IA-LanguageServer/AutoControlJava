@@ -11,10 +11,6 @@ public class OpenDriverProcess extends Thread {
     private Process process;
     // use to create process
     private List<String> processCommandList;
-    // use to read process output
-    private InputStreamReader driverProcessReader;
-    // use to read process error output
-    private InputStreamReader driverErrorReader;
 
     public OpenDriverProcess(String driverPath) {
         this.driverPath = driverPath;
@@ -27,13 +23,6 @@ public class OpenDriverProcess extends Thread {
         this.setDaemon(true);
     }
 
-    public void setDriverPath(String driverPath) {
-        this.driverPath = driverPath;
-    }
-
-    public String getDriverPath() {
-        return this.driverPath;
-    }
 
     public void close() {
         if (this.process != null) {
@@ -54,11 +43,8 @@ public class OpenDriverProcess extends Thread {
                     processBuilder = new ProcessBuilder(this.processCommandList);
                 }
                 this.process = processBuilder.start();
-                driverProcessReader = new InputStreamReader(process.getInputStream());
-                driverErrorReader = new InputStreamReader(process.getErrorStream());
-                if (process != null) {
-                    while (process.isAlive()) {
-                    }
+                while (process.isAlive()){
+
                 }
             }
         } catch (IOException e) {
