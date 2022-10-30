@@ -1,6 +1,6 @@
 package integration_test.screen;
 
-import autocontroldriver.bind.AutoControlDriverManager;
+import autocontroldriver.utils.driver_manager.DriverManager;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -10,16 +10,16 @@ import java.nio.file.Path;
 
 public class TestScreenFunctionWindows {
 
-    public static AutoControlDriverManager autoControlDriverManager;
+    public static DriverManager driverManager;
 
     @BeforeClass
     public static void setDriver() {
-        autoControlDriverManager = null;
+        driverManager = null;
         try {
-            autoControlDriverManager = new AutoControlDriverManager(
+            driverManager = new DriverManager(
                     "localhost",
                     9938,
-                    Path.of("").toAbsolutePath() + "/generate_autocontrol_driver.exe",
+                    Path.of("").toAbsolutePath() + "/generate_autocontrol_driver_win.exe",
                     "windows"
             );
         } catch (IOException e) {
@@ -29,20 +29,20 @@ public class TestScreenFunctionWindows {
 
     @AfterClass
     public static void afterTest() {
-       autoControlDriverManager.quit();
+       driverManager.quit();
     }
 
     @Test
     public void testSize() {
-        autoControlDriverManager.screen.screenSize();
+        driverManager.screen.screenSize();
     }
 
     @Test
     public void testScreenshot() {
-        autoControlDriverManager.screen.screenshot();
-        autoControlDriverManager.screen.screenshot(Path.of("").toAbsolutePath() + "/test.png");
-        autoControlDriverManager.screen.screenshot(100, 100, 500, 500);
-        autoControlDriverManager.screen.screenshot(
+        driverManager.screen.screenshot();
+        driverManager.screen.screenshot(Path.of("").toAbsolutePath() + "/test.png");
+        driverManager.screen.screenshot(100, 100, 500, 500);
+        driverManager.screen.screenshot(
                 Path.of("").toAbsolutePath() + "/test1.png",
                 100, 100, 500, 500);
     }

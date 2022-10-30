@@ -1,6 +1,6 @@
 package integration_test.record;
 
-import autocontroldriver.bind.AutoControlDriverManager;
+import autocontroldriver.utils.driver_manager.DriverManager;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -10,16 +10,16 @@ import java.nio.file.Path;
 
 public class TestRecordFunctionWindows {
 
-    public static AutoControlDriverManager autoControlDriverManager;
+    public static DriverManager driverManager;
 
     @BeforeClass
     public static void setDriver() {
-        autoControlDriverManager = null;
+        driverManager = null;
         try {
-            autoControlDriverManager = new AutoControlDriverManager(
+            driverManager = new DriverManager(
                     "localhost",
                     9938,
-                    Path.of("").toAbsolutePath() + "/generate_autocontrol_driver.exe",
+                    Path.of("").toAbsolutePath() + "/generate_autocontrol_driver_win.exe",
                     "windows"
             );
         } catch (IOException e) {
@@ -29,13 +29,13 @@ public class TestRecordFunctionWindows {
 
     @Test
     public void testRecord(){
-        autoControlDriverManager.record.record();
-        autoControlDriverManager.record.stopRecord();
+        driverManager.record.record();
+        driverManager.record.stopRecord();
     }
 
     @AfterClass
     public static void afterTest() {
-        autoControlDriverManager.quit();
+        driverManager.quit();
     }
 
 }

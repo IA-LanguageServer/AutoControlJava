@@ -1,6 +1,6 @@
 package integration_test.image;
 
-import autocontroldriver.bind.AutoControlDriverManager;
+import autocontroldriver.utils.driver_manager.DriverManager;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -10,16 +10,16 @@ import java.nio.file.Path;
 
 public class TestImageFunctionWindows {
 
-    public static AutoControlDriverManager autoControlDriverManager;
+    public static DriverManager driverManager;
 
     @BeforeClass
     public static void setDriver() {
-        autoControlDriverManager = null;
+        driverManager = null;
         try {
-            autoControlDriverManager = new AutoControlDriverManager(
+            driverManager = new DriverManager(
                     "localhost",
                     9938,
-                    Path.of("").toAbsolutePath() + "/generate_autocontrol_driver.exe",
+                    Path.of("").toAbsolutePath() + "/generate_autocontrol_driver_win.exe",
                     "windows"
             );
         } catch (IOException e) {
@@ -29,7 +29,7 @@ public class TestImageFunctionWindows {
 
    @Test
    public void testLocateAllImage(){
-        autoControlDriverManager.image.locateAllImage(
+        driverManager.image.locateAllImage(
                 Path.of("").toAbsolutePath() + "/test_resource/test_image.png",
                 0.9,
                 false
@@ -38,7 +38,7 @@ public class TestImageFunctionWindows {
 
     @Test
     public void testLocateImageCenter(){
-        autoControlDriverManager.image.locateImageCenter(
+        driverManager.image.locateImageCenter(
                 Path.of("").toAbsolutePath() + "/test_resource/test_image.png",
                 0.9,
                 false
@@ -48,7 +48,7 @@ public class TestImageFunctionWindows {
 
     @Test
     public void testLocateAndClick(){
-        autoControlDriverManager.image.locateAndClick(
+        driverManager.image.locateAndClick(
                 Path.of("").toAbsolutePath() + "/test_resource/test_image.png",
                 "mouse_left",
                 0.9,
@@ -60,7 +60,7 @@ public class TestImageFunctionWindows {
 
     @AfterClass
     public static void afterTest() {
-        autoControlDriverManager.quit();
+        driverManager.quit();
     }
 
 }

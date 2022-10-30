@@ -1,20 +1,23 @@
 package autocontroldriver.bind.keyboard;
 
-import autocontroldriver.bind.AutoControlDriverManager;
+import autocontroldriver.utils.driver_manager.DriverManager;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Keyboard {
 
-    private final AutoControlDriverManager autoControlDriverManager;
+    private DriverManager driverManager;
 
-    public Keyboard(AutoControlDriverManager autoControlDriverManager) {
-        this.autoControlDriverManager = autoControlDriverManager;
+    public Keyboard(DriverManager driverManager) {
+        this.driverManager = driverManager;
+    }
+
+    public void keysTable() {
+        this.driverManager.sendCommand(("[[\"keys_table\"]]"));
     }
 
     public void pressKey(String keycode, boolean isShift, boolean skipRecord) {
-        this.autoControlDriverManager.sendCommand(
+        this.driverManager.sendCommand(
                 String.format("[[\"press_key\", " +
                                 "{" +
                                 "\"keycode\": \"%s\"," +
@@ -26,7 +29,7 @@ public class Keyboard {
     }
 
     public void releaseKey(String keycode, boolean isShift, boolean skipRecord) {
-        this.autoControlDriverManager.sendCommand(
+        this.driverManager.sendCommand(
                 String.format("[[\"release_key\", " +
                                 "{" +
                                 "\"keycode\": \"%s\"," +
@@ -38,7 +41,7 @@ public class Keyboard {
     }
 
     public void typeKey(String keycode, boolean isShift, boolean skipRecord) {
-        this.autoControlDriverManager.sendCommand(
+        this.driverManager.sendCommand(
                 String.format("[[\"type_key\", " +
                                 "{" +
                                 "\"keycode\": \"%s\"," +
@@ -50,13 +53,13 @@ public class Keyboard {
     }
 
     public void checkKeyIsPress(String keycode) {
-        this.autoControlDriverManager.sendCommand(
+        this.driverManager.sendCommand(
                 String.format("[[\"check_key_is_press\", {\"keycode\": \"%s\"}]]", keycode)
         );
     }
 
     public void write(String writeString, boolean isShift) {
-        this.autoControlDriverManager.sendCommand(
+        this.driverManager.sendCommand(
                 String.format("[[\"write\", " +
                                 "{" +
                                 "\"write_string\": \"%s\", " +
@@ -79,7 +82,7 @@ public class Keyboard {
         hotKeyCommandBuildBuffer.append("]");
         hotKeyCommandBuildBuffer.append(String.format(", \"is_shift\": %b}]]", isShift));
         System.out.println(hotKeyCommandBuildBuffer);
-        this.autoControlDriverManager.sendCommand(hotKeyCommandBuildBuffer.toString());
+        this.driverManager.sendCommand(hotKeyCommandBuildBuffer.toString());
     }
 
 }

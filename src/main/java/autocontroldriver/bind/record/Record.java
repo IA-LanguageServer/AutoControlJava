@@ -1,21 +1,21 @@
 package autocontroldriver.bind.record;
 
-import autocontroldriver.bind.AutoControlDriverManager;
+import autocontroldriver.utils.driver_manager.DriverManager;
 
 public class Record {
 
-    private final AutoControlDriverManager autoControlDriverManager;
+    private DriverManager driverManager;
 
-    public Record(AutoControlDriverManager autoControlDriverManager) {
-        this.autoControlDriverManager = autoControlDriverManager;
+    public Record(DriverManager driverManager) {
+        this.driverManager = driverManager;
     }
 
     public void record(){
-        this.autoControlDriverManager.sendCommand("[[\"record\"]]");
+        this.driverManager.sendCommand("[[\"record\"]]");
     }
 
     public void stopRecord(){
-        this.autoControlDriverManager.sendCommand("[[\"stopRecord\"]]");
+        this.driverManager.sendCommand("[[\"stopRecord\"]]");
     }
 
 }
