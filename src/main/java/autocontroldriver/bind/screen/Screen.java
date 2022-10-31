@@ -10,30 +10,30 @@ public class Screen {
         this.driverManager = driverManager;
     }
 
-    public void screenSize() {
-        this.driverManager.sendCommand("[[\"size\"]]");
+    public String screenSize() {
+        return this.driverManager.sendCommand("[[\"size\"]]");
     }
 
-    public void screenshot() {
-        this.driverManager.sendCommand(("[[\"screenshot\"]]"));
+    public String screenshot() {
+        return this.driverManager.sendCommand(("[[\"screenshot\"]]"));
     }
 
-    public void screenshot(String filePath) {
+    public String screenshot(String filePath) {
         filePath = filePath.replace("\\", "/");
-        this.driverManager.sendCommand(
+        return this.driverManager.sendCommand(
                 String.format("[[\"screenshot\", {\"file_path\": \"%s\"}]]", filePath)
         );
     }
 
-    public void screenshot(int left_x, int left_y, int right_x, int right_y) {
-        this.driverManager.sendCommand("" +
+    public String screenshot(int left_x, int left_y, int right_x, int right_y) {
+        return this.driverManager.sendCommand("" +
                 String.format("[[\"screenshot\", {\"region\": [%d, %d, %d, %d]}]]", left_x, left_y, right_x, right_y)
         );
     }
 
-    public void screenshot(String filePath, int left_x, int left_y, int right_x, int right_y) {
+    public String screenshot(String filePath, int left_x, int left_y, int right_x, int right_y) {
         filePath = filePath.replace("\\", "/");
-        this.driverManager.sendCommand(
+        return this.driverManager.sendCommand(
                 String.format("[[\"screenshot\", {\"file_path\": \"%s\", \"region\": [%d, %d, %d, %d]}]]",
                         filePath, left_x, left_y, right_x, right_y)
         );
