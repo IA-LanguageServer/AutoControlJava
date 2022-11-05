@@ -1,6 +1,7 @@
 package autocontroldriver.utils.process;
 
 import java.io.*;
+import java.nio.file.Path;
 import java.util.List;
 
 public class OpenDriverProcess extends Thread {
@@ -39,8 +40,12 @@ public class OpenDriverProcess extends Thread {
                 ProcessBuilder processBuilder;
                 if (processCommandList == null ) {
                     processBuilder = new ProcessBuilder(this.driverPath);
+                    processBuilder.directory(new File(Path.of("").toAbsolutePath().toString()));
+                    processBuilder.inheritIO();
                 } else {
                     processBuilder = new ProcessBuilder(this.processCommandList);
+                    processBuilder.directory(new File(Path.of("").toAbsolutePath().toString()));
+                    processBuilder.inheritIO();
                 }
                 this.process = processBuilder.start();
                 while (process.isAlive()){

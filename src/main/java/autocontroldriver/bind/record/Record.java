@@ -10,12 +10,12 @@ public class Record {
         this.driverManager = driverManager;
     }
 
-    public void record(){
-        this.driverManager.sendCommand("[[\"record\"]]");
+    public String record(){
+        return this.driverManager.sendCommand("[[\"record\"]]");
     }
 
-    public void stopRecord(){
-        this.driverManager.sendCommand("[[\"stopRecord\"]]");
+    public String stopRecord(){
+        return this.driverManager.sendCommand("[[\"stopRecord\"]]");
     }
 
 }

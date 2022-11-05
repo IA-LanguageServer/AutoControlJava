@@ -10,20 +10,20 @@ public class Utils {
         this.driverManager = driverManager;
     }
 
-    public void setRecordEnable(boolean setEnable) {
-        driverManager.sendCommand(
+    public String setRecordEnable(boolean setEnable) {
+        return driverManager.sendCommand(
                 String.format("[[\"set_record_enable\", {\"set_enable\": %b}]]", setEnable)
         );
     }
 
-    public void generateHtml() {
-        driverManager.sendCommand(
+    public String generateHtml() {
+        return driverManager.sendCommand(
                 "[[\"generate_html\"]]"
         );
     }
 
-    public void generateHtml(String htmlName) {
-        driverManager.sendCommand(
+    public String generateHtml(String htmlName) {
+        return driverManager.sendCommand(
                 String.format("[[\"generate_html\", {\"html_name\": \"%s\"}]]", htmlName)
         );
     }

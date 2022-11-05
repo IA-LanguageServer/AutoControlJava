@@ -27,6 +27,11 @@ public class TestImageFunctionWindows {
         }
     }
 
+    @AfterClass
+    public static void afterTest() {
+        driverManager.quit();
+    }
+
    @Test
    public void testLocateAllImage(){
         driverManager.image.locateAllImage(
@@ -58,9 +63,6 @@ public class TestImageFunctionWindows {
     }
 
 
-    @AfterClass
-    public static void afterTest() {
-        driverManager.quit();
-    }
+
 
 }

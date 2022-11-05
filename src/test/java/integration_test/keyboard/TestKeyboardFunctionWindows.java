@@ -29,33 +29,38 @@ public class TestKeyboardFunctionWindows {
         }
     }
 
+    @AfterClass
+    public static void afterTest() {
+        driverManager.quit();
+    }
+
     @Test
-    public void testPressKey(){
+    public void testPressKey() {
         driverManager.keyboard.pressKey("a", false, false);
     }
 
     @Test
-    public void testReleaseKey(){
+    public void testReleaseKey() {
         driverManager.keyboard.releaseKey("a", false, false);
     }
 
     @Test
-    public void testTypeKey(){
+    public void testTypeKey() {
         driverManager.keyboard.typeKey("a", false, false);
     }
 
     @Test
-    public void testCheckKeyIsPress(){
+    public void testCheckKeyIsPress() {
         driverManager.keyboard.checkKeyIsPress("a");
     }
 
     @Test
-    public void testWrite(){
+    public void testWrite() {
         driverManager.keyboard.write("abcdef", false);
     }
 
     @Test
-    public void testHotKey(){
+    public void testHotKey() {
         List<String> list = new ArrayList<>();
         list.add("lcontrol");
         list.add("a");
@@ -67,13 +72,8 @@ public class TestKeyboardFunctionWindows {
     }
 
     @Test
-    public void testKeysTable(){
+    public void testKeysTable() {
         driverManager.keyboard.keysTable();
-    }
-
-    @AfterClass
-    public static void afterTest() {
-        driverManager.quit();
     }
 
 }
