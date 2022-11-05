@@ -27,6 +27,11 @@ public class TestMouseFunctionWindows {
         }
     }
 
+    @AfterClass
+    public static void afterTest() {
+        driverManager.quit();
+    }
+
     @Test
     public void positionTest() {
         driverManager.mouse.position();
@@ -54,13 +59,9 @@ public class TestMouseFunctionWindows {
     }
 
     @Test
-    public void testSpecialTable(){
+    public void testSpecialTable() {
         driverManager.mouse.specialTable();
     }
 
-    @AfterClass
-    public static void afterTest() {
-        driverManager.quit();
-    }
 
 }

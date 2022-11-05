@@ -39,7 +39,7 @@ public class ClientSocket extends Thread {
                 if (!stringToPrint.equals("quit_server")) {
                     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(this.sendCommandSocket.getInputStream()));
                     String readData = bufferedReader.readLine();
-                    if (readData != null) {
+                    if (readData != null && !readData.equals("")) {
                         while (!readData.equals("Return_Data_Over_JE")) {
                             stringBuffer.append(readData);
                             System.out.println(readData);

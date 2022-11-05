@@ -27,15 +27,16 @@ public class TestRecordFunctionWindows {
         }
     }
 
-    @Test
-    public void testRecord(){
-        driverManager.record.record();
-        driverManager.record.stopRecord();
-    }
-
     @AfterClass
     public static void afterTest() {
         driverManager.quit();
     }
+
+    @Test
+    public void testRecord() {
+        driverManager.record.record();
+        driverManager.record.stopRecord();
+    }
+
 
 }

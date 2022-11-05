@@ -81,7 +81,6 @@ public class Keyboard {
         }
         hotKeyCommandBuildBuffer.append("]");
         hotKeyCommandBuildBuffer.append(String.format(", \"is_shift\": %b}]]", isShift));
-        System.out.println(hotKeyCommandBuildBuffer);
         return this.driverManager.sendCommand(hotKeyCommandBuildBuffer.toString());
     }
 
