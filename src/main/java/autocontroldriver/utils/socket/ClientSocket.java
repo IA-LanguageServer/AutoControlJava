@@ -30,7 +30,6 @@ public class ClientSocket extends Thread {
         StringBuffer stringBuffer = new StringBuffer();
         while (retry && retryCount >= 0) {
             try {
-                System.out.println("command is: " + stringToPrint);
                 this.sendCommandSocket = new Socket(this.host, this.port);
                 this.printWriter = new PrintWriter(this.sendCommandSocket.getOutputStream());
                 this.printWriter.write(stringToPrint);
@@ -42,13 +41,12 @@ public class ClientSocket extends Thread {
                     if (readData != null && !readData.equals("")) {
                         while (!readData.equals("Return_Data_Over_JE")) {
                             stringBuffer.append(readData);
-                            System.out.println(readData);
                             System.out.flush();
                             readData = bufferedReader.readLine();
                         }
                     }
                     bufferedReader.close();
-                    this.sendCommandSocket.close();
+                    this.closeClient();
                 }
             } catch (IOException e) {
                 e.printStackTrace();
