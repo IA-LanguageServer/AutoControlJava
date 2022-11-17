@@ -5,11 +5,20 @@ import autocontroldriver.utils.driver_manager.DriverManager;
 public class Image {
 
     private DriverManager driverManager;
-
+    /**
+     *
+     * @param driverManager:
+     * */
     public Image(DriverManager driverManager) {
         this.driverManager = driverManager;
     }
 
+    /**
+     *
+     * @param imagePath:
+     * @param detectThreshold:
+     * @param drawImage:
+     * */
     public String locateAllImage(String imagePath, double detectThreshold, boolean drawImage) {
         imagePath = imagePath.replace("\\", "/");
         return this.driverManager.sendCommand(
@@ -21,6 +30,12 @@ public class Image {
         );
     }
 
+    /**
+     *
+     * @param imagePath:
+     * @param detectThreshold:
+     * @param drawImage:
+     * */
     public String locateImageCenter(String imagePath, double detectThreshold, boolean drawImage) {
         imagePath = imagePath.replace("\\", "/");
         return this.driverManager.sendCommand(
@@ -32,6 +47,13 @@ public class Image {
         );
     }
 
+    /**
+     *
+     * @param imagePath:
+     * @param mouseKeycode:
+     * @param detectThreshold:
+     * @param drawImage:
+     * */
     public String locateAndClick(String imagePath, String mouseKeycode,double detectThreshold, boolean drawImage) {
         imagePath = imagePath.replace("\\", "/");
         return this.driverManager.sendCommand(
