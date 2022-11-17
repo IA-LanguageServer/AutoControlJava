@@ -7,15 +7,25 @@ import java.util.List;
 public class Keyboard {
 
     private DriverManager driverManager;
-
+    /**
+     *
+     * @param driverManager:
+     * */
     public Keyboard(DriverManager driverManager) {
         this.driverManager = driverManager;
     }
-
+    /**
+     *
+     * */
     public String keysTable() {
         return this.driverManager.sendCommand(("[[\"keys_table\"]]"));
     }
-
+    /**
+     *
+     * @param keycode:
+     * @param isShift:
+     * @param skipRecord:
+     * */
     public String pressKey(String keycode, boolean isShift, boolean skipRecord) {
         return this.driverManager.sendCommand(
                 String.format("[[\"press_key\", " +
@@ -27,7 +37,12 @@ public class Keyboard {
                         keycode, isShift, skipRecord)
         );
     }
-
+    /**
+     *
+     * @param keycode:
+     * @param isShift:
+     * @param skipRecord:
+     * */
     public String releaseKey(String keycode, boolean isShift, boolean skipRecord) {
         return this.driverManager.sendCommand(
                 String.format("[[\"release_key\", " +
@@ -39,7 +54,12 @@ public class Keyboard {
                         keycode, isShift, skipRecord)
         );
     }
-
+    /**
+     *
+     * @param keycode:
+     * @param isShift:
+     * @param skipRecord:
+     * */
     public String typeKey(String keycode, boolean isShift, boolean skipRecord) {
         return this.driverManager.sendCommand(
                 String.format("[[\"type_key\", " +
@@ -51,13 +71,20 @@ public class Keyboard {
                         keycode, isShift, skipRecord)
         );
     }
-
+    /**
+     *
+     * @param keycode:
+     * */
     public String checkKeyIsPress(String keycode) {
         return this.driverManager.sendCommand(
                 String.format("[[\"check_key_is_press\", {\"keycode\": \"%s\"}]]", keycode)
         );
     }
-
+    /**
+     *
+     * @param writeString:
+     * @param isShift:
+     * */
     public String write(String writeString, boolean isShift) {
         return this.driverManager.sendCommand(
                 String.format("[[\"write\", " +
@@ -68,7 +95,11 @@ public class Keyboard {
                         writeString, isShift)
         );
     }
-
+    /**
+     *
+     * @param keyCodeList:
+     * @param isShift:
+     * */
     public String hotkey(List<String> keyCodeList, boolean isShift) {
         StringBuffer hotKeyCommandBuildBuffer = new StringBuffer();
         hotKeyCommandBuildBuffer.append("[[\"hotkey\", ").append("{").append("\"key_code_list\": ");
