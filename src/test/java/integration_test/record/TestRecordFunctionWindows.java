@@ -2,6 +2,7 @@ package integration_test.record;
 
 import autocontroldriver.utils.driver_manager.DriverManager;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -22,6 +23,7 @@ public class TestRecordFunctionWindows {
                     Path.of("").toAbsolutePath() + "/generate_autocontrol_driver_win.exe",
                     "windows"
             );
+            Assert.assertNotNull(driverManager);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -29,11 +31,13 @@ public class TestRecordFunctionWindows {
 
     @AfterClass
     public static void afterTest() {
+        Assert.assertNotNull(driverManager);
         driverManager.quit();
     }
 
     @Test
     public void testRecord() {
+        Assert.assertNotNull(driverManager);
         driverManager.record.record();
         driverManager.record.stopRecord();
     }

@@ -2,6 +2,7 @@ package integration_test.util;
 
 import autocontroldriver.utils.driver_manager.DriverManager;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -22,6 +23,7 @@ public class TestUtilsFunctionWindows {
                     Path.of("").toAbsolutePath() + "/generate_autocontrol_driver_win.exe",
                     "windows"
             );
+            Assert.assertNotNull(driverManager);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -29,11 +31,13 @@ public class TestUtilsFunctionWindows {
 
     @Test
     public void testSetRecordEnable() {
+        Assert.assertNotNull(driverManager);
         driverManager.utils.setRecordEnable(true);
     }
 
     @Test
     public void useMouseTest() {
+        Assert.assertNotNull(driverManager);
         driverManager.mouse.pressMouse("mouse_left");
         driverManager.mouse.releaseMouse("mouse_left");
         driverManager.mouse.pressMouse("mouse_left", 100, 100);
@@ -47,11 +51,13 @@ public class TestUtilsFunctionWindows {
 
     @Test
     public void testGenerateHtml() {
+        Assert.assertNotNull(driverManager);
         driverManager.utils.generateHtml();
     }
 
     @AfterClass
     public static void afterTest() {
+        Assert.assertNotNull(driverManager);
         driverManager.quit();
     }
 
