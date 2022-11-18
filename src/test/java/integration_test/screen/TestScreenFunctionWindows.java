@@ -2,6 +2,7 @@ package integration_test.screen;
 
 import autocontroldriver.utils.driver_manager.DriverManager;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -22,6 +23,7 @@ public class TestScreenFunctionWindows {
                     Path.of("").toAbsolutePath() + "/generate_autocontrol_driver_win.exe",
                     "windows"
             );
+            Assert.assertNotNull(driverManager);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -29,16 +31,19 @@ public class TestScreenFunctionWindows {
 
     @AfterClass
     public static void afterTest() {
-       driverManager.quit();
+        Assert.assertNotNull(driverManager);
+        driverManager.quit();
     }
 
     @Test
     public void testSize() {
+        Assert.assertNotNull(driverManager);
         driverManager.screen.screenSize();
     }
 
     @Test
     public void testScreenshot() {
+        Assert.assertNotNull(driverManager);
         driverManager.screen.screenshot();
         driverManager.screen.screenshot(Path.of("").toAbsolutePath() + "/test.png");
         driverManager.screen.screenshot(100, 100, 500, 500);

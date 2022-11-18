@@ -1,6 +1,7 @@
 package unittest.autocontroldrive.driver_manager;
 
 import autocontroldriver.utils.driver_manager.DriverManager;
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -20,6 +21,7 @@ public class TestDriverManager {
                     Path.of("").toAbsolutePath() + "/generate_autocontrol_driver_win.exe",
                     "windows"
             );
+            Assert.assertNotNull(driverManager);
             driverManager.quit();
         } catch (IOException e) {
             e.printStackTrace();
@@ -38,6 +40,7 @@ public class TestDriverManager {
                     commandList,
                     "windows"
             );
+            Assert.assertNotNull(driverManager);
         } catch (IOException e) {
             e.printStackTrace();
         } finally {

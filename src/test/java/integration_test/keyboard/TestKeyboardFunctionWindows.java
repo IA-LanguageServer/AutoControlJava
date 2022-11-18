@@ -2,6 +2,7 @@ package integration_test.keyboard;
 
 import autocontroldriver.utils.driver_manager.DriverManager;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -24,6 +25,7 @@ public class TestKeyboardFunctionWindows {
                     Path.of("").toAbsolutePath() + "/generate_autocontrol_driver_win.exe",
                     "windows"
             );
+            Assert.assertNotNull(driverManager);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -31,36 +33,43 @@ public class TestKeyboardFunctionWindows {
 
     @AfterClass
     public static void afterTest() {
+        Assert.assertNotNull(driverManager);
         driverManager.quit();
     }
 
     @Test
     public void testPressKey() {
+        Assert.assertNotNull(driverManager);
         driverManager.keyboard.pressKey("a", false, false);
     }
 
     @Test
     public void testReleaseKey() {
+        Assert.assertNotNull(driverManager);
         driverManager.keyboard.releaseKey("a", false, false);
     }
 
     @Test
     public void testTypeKey() {
+        Assert.assertNotNull(driverManager);
         driverManager.keyboard.typeKey("a", false, false);
     }
 
     @Test
     public void testCheckKeyIsPress() {
+        Assert.assertNotNull(driverManager);
         driverManager.keyboard.checkKeyIsPress("a");
     }
 
     @Test
     public void testWrite() {
+        Assert.assertNotNull(driverManager);
         driverManager.keyboard.write("abcdef", false);
     }
 
     @Test
     public void testHotKey() {
+        Assert.assertNotNull(driverManager);
         List<String> list = new ArrayList<>();
         list.add("lcontrol");
         list.add("a");
@@ -73,6 +82,7 @@ public class TestKeyboardFunctionWindows {
 
     @Test
     public void testKeysTable() {
+        Assert.assertNotNull(driverManager);
         driverManager.keyboard.keysTable();
     }
 
