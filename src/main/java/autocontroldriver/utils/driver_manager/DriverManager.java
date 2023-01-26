@@ -35,7 +35,7 @@ public class DriverManager {
                 break;
             case "linux":
                 if (this.driverPath.equals(""))
-                    this.driverPath = Path.of("").toAbsolutePath() + "/generate_autocontrol_driver_liinux";
+                    this.driverPath = Path.of("").toAbsolutePath() + "/generate_autocontrol_driver_linux";
                 break;
             case "macos":
                 if (this.driverPath.equals(""))
