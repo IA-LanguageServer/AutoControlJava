@@ -10,13 +10,20 @@ public class ClientSocket extends Thread {
     private final String host;
     private final int port;
 
+    /**
+     * @param host;
+     * @param port;
+     * @throws IOException;
+     */
     public ClientSocket(String host, int port) throws IOException {
         this.host = host;
         this.port = port;
         this.setDaemon(true);
     }
 
-
+    /**
+     * @throws IOException;
+     */
     public void closeClient() throws IOException {
         if (sendCommandSocket != null && !sendCommandSocket.isClosed())
             sendCommandSocket.close();
@@ -24,6 +31,10 @@ public class ClientSocket extends Thread {
             printWriter.close();
     }
 
+    /**
+     * @param stringToPrint;
+     * @return;
+     */
     public String sendData(String stringToPrint) {
         boolean retry = true;
         int retryCount = 5;

@@ -15,7 +15,7 @@ import java.util.List;
 
 public class DriverManager {
 
-    private ClientSocket clientSocket;
+    private final ClientSocket clientSocket;
     private static OpenDriverProcess openDriverProcess;
     private String host;
     private int port;
@@ -27,6 +27,12 @@ public class DriverManager {
     public Record record = new Record(this);
     public Utils utils = new Utils(this);
 
+    /**
+     * @param host;
+     * @param port;
+     * @param platform;
+     * @return driverPath;
+     */
     private String setDriver(String host, int port, String platform){
         switch (platform) {
             case "windows":
@@ -48,7 +54,13 @@ public class DriverManager {
         return this.driverPath;
     }
 
-
+    /**
+     * @param host;
+     * @param port;
+     * @param driverPath;
+     * @param platform;
+     * @throws IOException;
+     */
     public DriverManager(String host, int port, String driverPath, String platform) throws IOException {
         this.driverPath = driverPath;
         setDriver(host, port, platform);
@@ -63,6 +75,13 @@ public class DriverManager {
         }
     }
 
+    /**
+     * @param host;
+     * @param port;
+     * @param processCommandList;
+     * @param platform;
+     * @throws IOException;
+     */
     public DriverManager(String host, int port, List<String> processCommandList, String platform) throws IOException {
         this.driverPath = processCommandList.get(0);
         setDriver(host, port, platform);
@@ -77,7 +96,10 @@ public class DriverManager {
         }
     }
 
-
+    /**
+     * @param commandToSend;
+     * @return string;
+     */
     public String sendCommand(String commandToSend) {
         int retryCount = 5;
         while (retryCount >= 0) {

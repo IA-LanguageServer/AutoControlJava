@@ -6,18 +6,23 @@ import java.util.List;
 
 public class OpenDriverProcess extends Thread {
 
-    // AutoControl Driver path
-    private String driverPath;
+    private final String driverPath;
     // Process use to open driver
     private Process process;
-    // use to create process
+    // string command list use to create process
     private List<String> processCommandList;
 
+    /**
+     * @param driverPath;
+     */
     public OpenDriverProcess(String driverPath) {
         this.driverPath = driverPath;
         this.setDaemon(true);
     }
 
+    /**
+     * @param processCommandList;
+     */
     public OpenDriverProcess(List<String> processCommandList) {
         this.driverPath = processCommandList.get(0);
         this.processCommandList = processCommandList;
@@ -31,6 +36,9 @@ public class OpenDriverProcess extends Thread {
         }
     }
 
+    /**
+     *
+     */
     @Override
     public void run() {
         super.run();
@@ -38,7 +46,7 @@ public class OpenDriverProcess extends Thread {
             File checkDriver = new File(this.driverPath);
             if (checkDriver.exists()) {
                 ProcessBuilder processBuilder;
-                if (processCommandList == null ) {
+                if (processCommandList == null) {
                     processBuilder = new ProcessBuilder(this.driverPath);
                     processBuilder.directory(new File(Path.of("").toAbsolutePath().toString()));
                     processBuilder.inheritIO();
@@ -48,7 +56,7 @@ public class OpenDriverProcess extends Thread {
                     processBuilder.inheritIO();
                 }
                 this.process = processBuilder.start();
-                while (process.isAlive()){
+                while (process.isAlive()) {
 
                 }
             }
