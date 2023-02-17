@@ -6,26 +6,26 @@ public class Mouse {
 
     private final DriverManager driverManager;
     /**
-     *
-     * @param driverManager:
+     * class init with driver manager
+     * @param driverManager driver manager that manage driver:
      * */
     public Mouse(DriverManager driverManager) {
         this.driverManager = driverManager;
     }
     /**
-     *
+     * return all special keycode can be used
      * */
     public String specialTable() {
         return this.driverManager.sendCommand(("[[\"special_table\"]]"));
     }
     /**
-     *
+     * get current mouse position x, y
      * */
     public String position(){
         return this.driverManager.sendCommand("[[\"position\"]]");
     }
     /**
-     *
+     * set mouse position
      * @param x:
      * @param y:
      * */
