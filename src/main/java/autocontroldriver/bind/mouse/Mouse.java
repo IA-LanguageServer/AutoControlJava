@@ -26,8 +26,8 @@ public class Mouse {
     }
     /**
      * set mouse position
-     * @param x:
-     * @param y:
+     * @param x: set mouse position x
+     * @param y: set mouse position y
      * */
     public String setPosition(int x, int y){
         return this.driverManager.sendCommand(
@@ -36,7 +36,7 @@ public class Mouse {
     }
     /**
      *
-     * @param mouse_keycode:
+     * @param mouse_keycode: mouse keycode we want to press
      * */
     public String pressMouse(String mouse_keycode){
         return this.driverManager.sendCommand(
@@ -45,9 +45,9 @@ public class Mouse {
     }
     /**
      *
-     * @param mouse_keycode:
-     * @param x:
-     * @param y:
+     * @param mouse_keycode: mouse keycode we want to press
+     * @param x: pressMouse on position x
+     * @param y: pressMouse on position y
      * */
     public String pressMouse(String mouse_keycode, int x, int y){
         return this.driverManager.sendCommand(
@@ -56,7 +56,7 @@ public class Mouse {
     }
     /**
      *
-     * @param mouse_keycode:
+     * @param mouse_keycode: mouse keycode we want to press
      * */
     public String releaseMouse(String mouse_keycode){
         return this.driverManager.sendCommand(
@@ -65,9 +65,9 @@ public class Mouse {
     }
     /**
      *
-     * @param mouse_keycode:
-     * @param x:
-     * @param y:
+     * @param mouse_keycode: mouse keycode we want to press
+     * @param x: releaseMouse event on position x
+     * @param y: releaseMouse event on position y
      * */
     public String releaseMouse(String mouse_keycode, int x, int y){
         return this.driverManager.sendCommand(
@@ -77,7 +77,7 @@ public class Mouse {
 
     /**
      *
-     * @param mouse_keycode:
+     * @param mouse_keycode: mouse keycode we want to press
      * */
     public String clickMouse(String mouse_keycode){
         return this.driverManager.sendCommand(
@@ -86,9 +86,9 @@ public class Mouse {
     }
     /**
      *
-     * @param mouse_keycode:
-     * @param x:
-     * @param y:
+     * @param mouse_keycode: mouse keycode we want to press
+     * @param x: scroll event on position x
+     * @param y: scroll event on position y
      * */
     public String clickMouse(String mouse_keycode, int x, int y){
         return this.driverManager.sendCommand(
@@ -97,7 +97,7 @@ public class Mouse {
     }
     /**
      *
-     * @param scroll_value:
+     * @param scroll_value: wheel scroll value
      * */
     public String scroll(int scroll_value){
         return this.driverManager.sendCommand(
@@ -106,9 +106,9 @@ public class Mouse {
     }
     /**
      *
-     * @param scroll_value:
-     * @param x:
-     * @param y:
+     * @param scroll_value: wheel scroll value
+     * @param x: scroll on position x
+     * @param y: scroll on position y
      * */
     public String scroll(int scroll_value, int x, int y){
         return this.driverManager.sendCommand(
@@ -118,10 +118,10 @@ public class Mouse {
     }
     /**
      *
-     * @param scroll_value:
-     * @param x:
-     * @param y:
-     * @param scroll_direction:
+     * @param scroll_value: wheel scroll value
+     * @param x: scroll on position x
+     * @param y: scroll on position y
+     * @param scroll_direction: scroll which direction (scroll_up, scroll_down, scroll_left, scroll_right)
      * */
     public String scroll(int scroll_value, int x, int y, String scroll_direction){
         return this.driverManager.sendCommand(
