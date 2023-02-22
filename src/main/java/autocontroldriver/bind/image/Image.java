@@ -18,6 +18,7 @@ public class Image {
      * @param imagePath what image we want to locate string full path;
      * @param detectThreshold how strict of detect;
      * @param drawImage draw detect image area;
+     * @return  server response string
      * */
     public String locateAllImage(String imagePath, double detectThreshold, boolean drawImage) {
         imagePath = imagePath.replace("\\", "/");
@@ -35,6 +36,7 @@ public class Image {
      * @param imagePath what image we want to locate string full path;
      * @param detectThreshold how strict of detect;
      * @param drawImage draw detect image area;
+     * @return  server response string
      * */
     public String locateImageCenter(String imagePath, double detectThreshold, boolean drawImage) {
         imagePath = imagePath.replace("\\", "/");
@@ -53,6 +55,7 @@ public class Image {
      * @param detectThreshold how strict of detect;
      * @param mouseKeycode click mouse keycode on detected image center
      * @param drawImage draw detect image area;
+     * @return  server response string
      * */
     public String locateAndClick(String imagePath, String mouseKeycode,double detectThreshold, boolean drawImage) {
         imagePath = imagePath.replace("\\", "/");

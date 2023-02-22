@@ -6,27 +6,31 @@ public class Screen {
 
     private DriverManager driverManager;
     /**
-     *
-     * @param driverManager:
+     * class init with driver manager
+     * @param driverManager driver manager that manage driver:
      * */
     public Screen(DriverManager driverManager) {
         this.driverManager = driverManager;
     }
+
     /**
-     *
-     * */
+     * get screen size
+     * @return  server response string
+     */
     public String screenSize() {
         return this.driverManager.sendCommand("[[\"size\"]]");
     }
+
     /**
-     *
-     * */
+     * make a screenshot
+     * @return  server response string
+     */
     public String screenshot() {
         return this.driverManager.sendCommand(("[[\"screenshot\"]]"));
     }
     /**
-     *
-     * @param filePath:
+     * @param filePath: save screenshot path
+     * @return  server response string
      * */
     public String screenshot(String filePath) {
         filePath = filePath.replace("\\", "/");
@@ -35,11 +39,11 @@ public class Screen {
         );
     }
     /**
-     *
-     * @param left_x:
-     * @param left_y:
-     * @param right_x:
-     * @param right_y:
+     * @param left_x: screenshot zone left x
+     * @param left_y: screenshot zone left y
+     * @param right_x: screenshot zone right x
+     * @param right_y: screenshot zone right y
+     * @return  server response string
      * */
     public String screenshot(int left_x, int left_y, int right_x, int right_y) {
         return this.driverManager.sendCommand("" +
@@ -47,12 +51,12 @@ public class Screen {
         );
     }
     /**
-     *
-     * @param filePath:
-     * @param left_x:
-     * @param left_y:
-     * @param right_x:
-     * @param right_y:
+     * @param filePath: save screenshot path
+     * @param left_x: screenshot zone left x
+     * @param left_y: screenshot zone left y
+     * @param right_x: screenshot zone right x
+     * @param right_y: screenshot zone right y
+     * @return  server response string
      * */
     public String screenshot(String filePath, int left_x, int left_y, int right_x, int right_y) {
         filePath = filePath.replace("\\", "/");

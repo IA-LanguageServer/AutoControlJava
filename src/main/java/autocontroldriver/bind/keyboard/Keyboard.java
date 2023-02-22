@@ -17,7 +17,7 @@ public class Keyboard {
 
     /**
      *
-     * @return return all keycode can be used;
+     * @return return all keycode can be used; server response string
      */
     public String keysTable() {
         return this.driverManager.sendCommand(("[[\"keys_table\"]]"));
@@ -27,6 +27,7 @@ public class Keyboard {
      * @param keycode: which keycode we want to press
      * @param isShift: auto press shift when use this method
      * @param skipRecord: make this press event skip recode true or false
+     * @return  server response string
      * */
     public String pressKey(String keycode, boolean isShift, boolean skipRecord) {
         return this.driverManager.sendCommand(
@@ -44,6 +45,7 @@ public class Keyboard {
      * @param keycode: which keycode we want to press
      * @param isShift: auto press shift when use this method
      * @param skipRecord: make this press event skip recode true or false
+     * @return  server response string
      * */
     public String releaseKey(String keycode, boolean isShift, boolean skipRecord) {
         return this.driverManager.sendCommand(
@@ -61,6 +63,7 @@ public class Keyboard {
      * @param keycode: which keycode we want to press
      * @param isShift: auto press shift when use this method
      * @param skipRecord: make this press event skip recode true or false
+     * @return  server response string
      * */
     public String typeKey(String keycode, boolean isShift, boolean skipRecord) {
         return this.driverManager.sendCommand(
@@ -76,6 +79,7 @@ public class Keyboard {
     /**
      *
      * @param keycode: check this keycode key is pressed or not
+     * @return  server response string
      * */
     public String checkKeyIsPress(String keycode) {
         return this.driverManager.sendCommand(
@@ -86,6 +90,7 @@ public class Keyboard {
      *
      * @param writeString: all string we want to type
      * @param isShift: auto press shift when use this method
+     * @return  server response string
      * */
     public String write(String writeString, boolean isShift) {
         return this.driverManager.sendCommand(
@@ -101,6 +106,7 @@ public class Keyboard {
      *
      * @param keyCodeList: all keycode will press and
      * @param isShift: auto press shift when use this method
+     * @return  server response string
      * */
     public String hotkey(List<String> keyCodeList, boolean isShift) {
         StringBuffer hotKeyCommandBuildBuffer = new StringBuffer();
