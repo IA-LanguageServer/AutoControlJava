@@ -28,10 +28,10 @@ public class DriverManager {
     public Utils utils = new Utils(this);
 
     /**
-     * @param host;
-     * @param port;
-     * @param platform;
-     * @return driverPath;
+     * @param host: server host
+     * @param port: server port
+     * @param platform: which os we want to use [windows, linux, macos]
+     * @return driverPath: driver full path
      */
     private String setDriver(String host, int port, String platform){
         switch (platform) {
@@ -55,11 +55,11 @@ public class DriverManager {
     }
 
     /**
-     * @param host;
-     * @param port;
-     * @param driverPath;
-     * @param platform;
-     * @throws IOException;
+     * @param host: server host
+     * @param port: server port
+     * @param driverPath: which driver we want to use (need full path)
+     * @param platform: which os we want to use [windows, linux, macos]
+     * @throws IOException: If we can't start Driver Process
      */
     public DriverManager(String host, int port, String driverPath, String platform) throws IOException {
         this.driverPath = driverPath;
@@ -76,11 +76,11 @@ public class DriverManager {
     }
 
     /**
-     * @param host;
-     * @param port;
-     * @param processCommandList;
-     * @param platform;
-     * @throws IOException;
+     * @param host: server host
+     * @param port: server port
+     * @param processCommandList: start process with command
+     * @param platform: which os we want to use [windows, linux, macos]
+     * @throws IOException: If we can't start Driver Process
      */
     public DriverManager(String host, int port, List<String> processCommandList, String platform) throws IOException {
         this.driverPath = processCommandList.get(0);
@@ -97,8 +97,8 @@ public class DriverManager {
     }
 
     /**
-     * @param commandToSend;
-     * @return string;
+     * @param commandToSend: use to send string command to server
+     * @return server response string  if server doesn't response return ""
      */
     public String sendCommand(String commandToSend) {
         int retryCount = 5;
@@ -113,7 +113,9 @@ public class DriverManager {
         return "";
     }
 
-
+    /**
+     * send quit_server to server and close all
+     */
     public void quit() {
         try {
             this.clientSocket.sendData("quit_server");
