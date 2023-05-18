@@ -15,6 +15,11 @@ public class Execute {
         this.driverManager = driverManager;
     }
 
+    /**
+     *
+     * @param filePath
+     * @return
+     */
     public String executeFile(List<String> filePath) {
         StringBuilder filePathBuilder = new StringBuilder();
         filePathBuilder.append("[[\"execute_files\", ").append("{").append("\"execute_files_list\": ");
@@ -27,6 +32,28 @@ public class Execute {
         }
         filePathBuilder.append("]}]]");
         return this.driverManager.sendCommand(filePathBuilder.toString());
+    }
+
+    /**
+     *
+     * @param packageName
+     * @return
+     */
+    public String addPackageToExecutor(String packageName){
+        return this.driverManager.sendCommand(
+                String.format("[[\"add_package_to_executor\", {\"package\": \"%s\"}]]", packageName)
+        );
+    }
+
+    /**
+     *
+     * @param packageName
+     * @return
+     */
+    public String addPackageToCallBackExecutor(String packageName){
+        return this.driverManager.sendCommand(
+                String.format("[[\"add_package_to_callback_executor\", {\"package\": \"%s\"}]]", packageName)
+        );
     }
 
 }
