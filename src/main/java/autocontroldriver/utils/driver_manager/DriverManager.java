@@ -5,7 +5,7 @@ import autocontroldriver.bind.keyboard.Keyboard;
 import autocontroldriver.bind.mouse.Mouse;
 import autocontroldriver.bind.record.Record;
 import autocontroldriver.bind.screen.Screen;
-import autocontroldriver.bind.utils.Utils;
+import autocontroldriver.bind.utils.Report;
 import autocontroldriver.utils.process.OpenDriverProcess;
 import autocontroldriver.utils.socket.ClientSocket;
 
@@ -25,7 +25,7 @@ public class DriverManager {
     public Keyboard keyboard = new Keyboard(this);
     public Image image = new Image(this);
     public Record record = new Record(this);
-    public Utils utils = new Utils(this);
+    public Report report = new Report(this);
 
     /**
      * @param host: server host

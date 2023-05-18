@@ -1,4 +1,4 @@
-package unittest.autocontroldrive.socket;
+package test.unittest.autocontroldrive.socket;
 
 import autocontroldriver.utils.socket.ClientSocket;
 import org.junit.Assert;

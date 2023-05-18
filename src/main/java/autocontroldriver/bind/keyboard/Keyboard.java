@@ -109,7 +109,7 @@ public class Keyboard {
      * @return  server response string
      * */
     public String hotkey(List<String> keyCodeList, boolean isShift) {
-        StringBuffer hotKeyCommandBuildBuffer = new StringBuffer();
+        StringBuilder hotKeyCommandBuildBuffer = new StringBuilder();
         hotKeyCommandBuildBuffer.append("[[\"hotkey\", ").append("{").append("\"key_code_list\": ");
         hotKeyCommandBuildBuffer.append("[");
         for (int index = 0; index < keyCodeList.size(); index++) {

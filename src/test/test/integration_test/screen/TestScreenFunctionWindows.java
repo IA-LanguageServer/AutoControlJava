@@ -1,4 +1,4 @@
-package integration_test.screen;
+package test.integration_test.screen;
 
 import autocontroldriver.utils.driver_manager.DriverManager;
 import org.junit.AfterClass;

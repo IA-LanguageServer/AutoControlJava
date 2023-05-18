@@ -1,4 +1,4 @@
-package integration_test.util;
+package test.integration_test.util;
 
 import autocontroldriver.utils.driver_manager.DriverManager;
 import org.junit.AfterClass;
@@ -9,7 +9,7 @@ import org.junit.Test;
 import java.io.IOException;
 import java.nio.file.Path;
 
-public class TestUtilsFunctionWindows {
+public class TestReportFunctionWindows {
 
     public static DriverManager driverManager;
 
@@ -32,7 +32,7 @@ public class TestUtilsFunctionWindows {
     @Test
     public void testSetRecordEnable() {
         Assert.assertNotNull(driverManager);
-        driverManager.utils.setRecordEnable(true);
+        driverManager.report.setRecordEnable(true);
     }
 
     @Test
@@ -52,7 +52,7 @@ public class TestUtilsFunctionWindows {
     @Test
     public void testGenerateHtml() {
         Assert.assertNotNull(driverManager);
-        driverManager.utils.generateHtml();
+        driverManager.report.generateHtmlReport();
     }
 
     @AfterClass

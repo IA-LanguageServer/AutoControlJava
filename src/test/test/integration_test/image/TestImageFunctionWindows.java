@@ -1,4 +1,4 @@
-package integration_test.image;
+package test.integration_test.image;
 
 import autocontroldriver.utils.driver_manager.DriverManager;
 import org.junit.AfterClass;

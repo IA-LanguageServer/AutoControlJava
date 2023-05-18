@@ -1,4 +1,4 @@
-package integration_test.mouse;
+package test.integration_test.mouse;
 
 import autocontroldriver.utils.driver_manager.DriverManager;
 import org.junit.AfterClass;

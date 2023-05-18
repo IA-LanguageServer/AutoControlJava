@@ -1,4 +1,4 @@
-package integration_test.keyboard;
+package test.integration_test.keyboard;
 
 import autocontroldriver.utils.driver_manager.DriverManager;
 import org.junit.AfterClass;
