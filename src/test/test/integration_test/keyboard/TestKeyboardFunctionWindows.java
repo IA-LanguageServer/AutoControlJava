@@ -1,4 +1,4 @@
-package integration_test.keyboard;
+package test.integration_test.keyboard;
 
 import autocontroldriver.utils.driver_manager.DriverManager;
 import org.junit.AfterClass;
@@ -22,7 +22,7 @@ public class TestKeyboardFunctionWindows {
             driverManager = new DriverManager(
                     "localhost",
                     9938,
-                    Path.of("").toAbsolutePath() + "/generate_autocontrol_driver_win.exe",
+                    Path.of("").toAbsolutePath() + "/AutoControlDriverWindows.exe",
                     "windows"
             );
             Assert.assertNotNull(driverManager);

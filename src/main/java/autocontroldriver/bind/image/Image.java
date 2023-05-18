@@ -7,7 +7,7 @@ public class Image {
     private final DriverManager driverManager;
     /**
      * class init with driver manager
-     * @param driverManager driver manager that manage driver:
+     * @param driverManager driver manager that manage driver
      * */
     public Image(DriverManager driverManager) {
         this.driverManager = driverManager;

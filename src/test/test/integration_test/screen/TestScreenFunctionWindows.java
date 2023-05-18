@@ -1,4 +1,4 @@
-package integration_test.screen;
+package test.integration_test.screen;
 
 import autocontroldriver.utils.driver_manager.DriverManager;
 import org.junit.AfterClass;
@@ -20,7 +20,7 @@ public class TestScreenFunctionWindows {
             driverManager = new DriverManager(
                     "localhost",
                     9938,
-                    Path.of("").toAbsolutePath() + "/generate_autocontrol_driver_win.exe",
+                    Path.of("").toAbsolutePath() + "/AutoControlDriverWindows.exe",
                     "windows"
             );
             Assert.assertNotNull(driverManager);

@@ -5,7 +5,7 @@ import autocontroldriver.bind.keyboard.Keyboard;
 import autocontroldriver.bind.mouse.Mouse;
 import autocontroldriver.bind.record.Record;
 import autocontroldriver.bind.screen.Screen;
-import autocontroldriver.bind.utils.Utils;
+import autocontroldriver.bind.utils.Report;
 import autocontroldriver.utils.process.OpenDriverProcess;
 import autocontroldriver.utils.socket.ClientSocket;
 
@@ -25,7 +25,7 @@ public class DriverManager {
     public Keyboard keyboard = new Keyboard(this);
     public Image image = new Image(this);
     public Record record = new Record(this);
-    public Utils utils = new Utils(this);
+    public Report report = new Report(this);
 
     /**
      * @param host: server host
@@ -37,15 +37,15 @@ public class DriverManager {
         switch (platform) {
             case "windows":
                 if (this.driverPath.equals(""))
-                    this.driverPath = Path.of("").toAbsolutePath() + "/generate_autocontrol_driver_win.exe";
+                    this.driverPath = Path.of("").toAbsolutePath() + "/AutoControlDriverWindows.exe";
                 break;
             case "linux":
                 if (this.driverPath.equals(""))
-                    this.driverPath = Path.of("").toAbsolutePath() + "/generate_autocontrol_driver_linux";
+                    this.driverPath = Path.of("").toAbsolutePath() + "/AutoControlDriverLinux";
                 break;
             case "macos":
                 if (this.driverPath.equals(""))
-                    this.driverPath = Path.of("").toAbsolutePath() + "/generate_autocontrol_driver_macos";
+                    this.driverPath = Path.of("").toAbsolutePath() + "/AutoControlDriverMacOS";
                 break;
         }
         this.host = host;

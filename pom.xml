@@ -17,9 +17,9 @@
 
     <developers>
         <developer>
-            <id>jechen</id>
+            <id>je_chen</id>
             <name>JE Chen</name>
-            <email>zenmailman@gmail.com</email>
+            <email>jechenmailman@gmail.com</email>
         </developer>
     </developers>
 
@@ -27,7 +27,6 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
     </properties>
-
 
     <dependencies>
         <dependency>
