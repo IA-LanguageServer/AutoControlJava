@@ -20,7 +20,7 @@ public class TestRecordFunctionWindows {
             driverManager = new DriverManager(
                     "localhost",
                     9938,
-                    Path.of("").toAbsolutePath() + "/generate_autocontrol_driver_win.exe",
+                    Path.of("").toAbsolutePath() + "/AutoControlDriverWindows.exe",
                     "windows"
             );
             Assert.assertNotNull(driverManager);

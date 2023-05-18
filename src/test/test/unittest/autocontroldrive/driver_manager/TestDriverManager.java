@@ -18,7 +18,7 @@ public class TestDriverManager {
             driverManager = new DriverManager(
                     "localhost",
                     9938,
-                    Path.of("").toAbsolutePath() + "/generate_autocontrol_driver_win.exe",
+                    Path.of("").toAbsolutePath() + "/AutoControlDriverWindows.exe",
                     "windows"
             );
             Assert.assertNotNull(driverManager);
@@ -32,7 +32,7 @@ public class TestDriverManager {
     public void testDriverManagerProcessCommand() {
         DriverManager driverManager = null;
         List<String> commandList = new ArrayList<>();
-        commandList.add(Path.of("").toAbsolutePath() + "/generate_autocontrol_driver_win.exe");
+        commandList.add(Path.of("").toAbsolutePath() + "/AutoControlDriverWindows.exe");
         try {
             driverManager = new DriverManager(
                     "localhost",

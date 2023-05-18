@@ -13,7 +13,7 @@ public class TestOpenDriver {
     @Test
     public void testOpen() {
         OpenDriverProcess openDriverProcess = new OpenDriverProcess(
-                Path.of("").toAbsolutePath() + "/generate_autocontrol_driver_win.exe");
+                Path.of("").toAbsolutePath() + "/AutoControlDriverWindows.exe");
         openDriverProcess.start();
         Assert.assertNotNull(openDriverProcess);
     }

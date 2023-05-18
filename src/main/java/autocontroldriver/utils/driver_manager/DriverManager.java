@@ -37,15 +37,15 @@ public class DriverManager {
         switch (platform) {
             case "windows":
                 if (this.driverPath.equals(""))
-                    this.driverPath = Path.of("").toAbsolutePath() + "/generate_autocontrol_driver_win.exe";
+                    this.driverPath = Path.of("").toAbsolutePath() + "/AutoControlDriverWindows.exe";
                 break;
             case "linux":
                 if (this.driverPath.equals(""))
-                    this.driverPath = Path.of("").toAbsolutePath() + "/generate_autocontrol_driver_linux";
+                    this.driverPath = Path.of("").toAbsolutePath() + "/AutoControlDriverLinux";
                 break;
             case "macos":
                 if (this.driverPath.equals(""))
-                    this.driverPath = Path.of("").toAbsolutePath() + "/generate_autocontrol_driver_macos";
+                    this.driverPath = Path.of("").toAbsolutePath() + "/AutoControlDriverMacOS";
                 break;
         }
         this.host = host;
